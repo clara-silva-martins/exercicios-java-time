@@ -1,5 +1,7 @@
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -40,7 +42,66 @@ public class Main {
         LocalDate dataPagamento = LocalDate.parse("2025-10-30");
         Period periodo = Period.between(dataCompra, dataPagamento);
         System.out.println("Diferença em dias: " + periodo.getDays());
-        
+
+        //EXERCICICIO DATA E HORA ATUAL
+
+
+        String tarefa;
+        String opcao;
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Deseja começar a tarefa agora? (S/N)");
+        tarefa = scanner.nextLine();
+
+        if(tarefa.equals("S")) {
+            System.out.println("""
+                     Digite a opção desejada:
+                     1 - Enviar relatório semanal
+                     2 - Sair             \s
+                    \s"""
+            );
+            opcao = scanner.nextLine();
+
+            if (opcao.equals("1")) {
+                System.out.println("Enviar relatório semanal");
+                LocalDate dataInicioTarefa = LocalDate.now();
+                System.out.println("Data atual: " + dataInicioTarefa);
+                LocalTime horaInicioTarefa = LocalTime.now();
+                System.out.println("Hora atual: " + horaInicioTarefa);
+            } else {
+                System.out.println("Continue em outro momento");
+            }
+        } else if (tarefa.equals("N")) {
+            System.out.println("Volte em outra hora!");
+        }
+
+        //EXERCICIO FORMATAR DATA E HORA ATUAL
+
+        LocalTime horaHoje = LocalTime.now();
+        System.out.println("Hora hoje: " + horaHoje);
+
+        DateTimeFormatter horaFormatada = DateTimeFormatter.ofPattern("HH:mm");
+        System.out.println("Hora formatada: " + horaFormatada.format(horaHoje));
+
+        LocalDate dataHoje = LocalDate.now();
+        System.out.println("Data hoje: " + dataHoje);
+
+        DateTimeFormatter dataFormatada = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        System.out.println("Data formatada: " + dataFormatada.format(dataHoje));
+
+        //EXERCICIO FORMATAR DATA E HORA ATUAL
+
+        LocalTime inicioAtividade = LocalTime.of(1, 0);
+        LocalTime fimAtividade = LocalTime.of(13, 30);
+
+        Duration durationA = Duration.between(inicioAtividade, fimAtividade);
+        System.out.println("Diferença de tempo: " + durationA.toHours() + " horas e " + durationA.toMinutes() + " " +
+                "minutos");
+
+        //EXERCICIO CALCULAR DATA DE ENTREGA
+
+
+
 
 
 
